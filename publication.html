@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <title>Yinsong Wang - Publications</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yinsong Wang - Publications</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
 
   <style>
     /* Navigation bar styles */
@@ -40,30 +42,38 @@
     .navbar-toggle .icon-bar {
       background-color: #07090c; /* Color of the toggle button's bars */
     }
+
+    li.paper a {
+  font-size: 19px; /* Adjust the font size to your preference */
+    }
   </style>
 
 </head>
 <body>
+
+
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="publications.html">Publications</a></li> <!-- Link to the new publications page -->
-          <li><a href="cv.pdf">CV</a></li> 
-        </ul>
-      </div>
-    </div>
-  </nav>
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				  <li><a href="index.html">Home</a></li>
+				  <li><a href="publication.html">Publications</a></li> 
+				  <li><a href="cv.pdf">CV</a></li> 
+		  </ul>
+		</div>
+	  </div>
+	</nav>
 
   <!-- Page Content -->
   <div class="container">
@@ -72,7 +82,7 @@
       <div class="col-md-12">
         <h2>Publications</h2>
         <!-- Your publications content goes here -->
-        <strong>Journal</strong><br/>
+        <h3>Journal</h3><br/>
         <ul>
           <!-- Include your publication list here -->
           <li class="paper"><a href="https://ieeexplore.ieee.org/abstract/document/10190133">TAKDE: Temporal Adaptive Kernel Density Estimator for Real-Time Dynamic Density Estimation</a> 
@@ -92,7 +102,7 @@
           <br> <em>IEEE Transactions on Human-Machine Systems (IF:4.142)</em>
         </li>
         </ul>
-        <strong>Conference</strong><br/>
+        <h3>Conference</h3><br/>
         <ul>
           <!-- Include your conference publications here -->
             <li class="paper"><a href="https://www.sciencedirect.com/science/article/pii/S1877050923006786">Estimating Traffic Density using Transformer Decoders</a>. 
