@@ -1,166 +1,488 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-  <title>Yinsong Wang</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    /* Navigation bar styles */
-    .navbar {
-      width: 100%; /* Set the desired width, e.g., 100% to span the entire viewport width */
-      /*height: 100px; /* Set the desired height, e.g., 200px */
-      background-image: url('background.jpg'); /* Replace 'your-background-image.jpg' with the path to your background image */
-      background-size: contain;
-      background-repeat: no-repeat;
-      /* background-attachment: fixed;
-      padding: 20px 0; /* Add some padding to the top and bottom */
-    }
-    
-
-    .navbar-brand {
-      font-size: 36px; /* Increase the font size for the brand/logo */
-      font-family: 'Oswald', sans-serif; /* Use your preferred font-family */
-      color: #0a0707; /* Text color */
-    }
-  
-    .navbar-nav > li > a {
-      font-size: 20px; /* Increase the font size for the navigation links */
-      font-family: 'Oswald', sans-serif; /* Use your preferred font-family */
-      color: #070505; /* Text color */
-    }
-  
-    .navbar-toggle {
-      background-color: #0a0909; /* Color of the toggle button */
-    }
-  
-    .navbar-toggle .icon-bar {
-      background-color: #07090c; /* Color of the toggle button's bars */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Yinsong Wang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #003057 0%, #B3A369 50%, #EAAA00 100%);
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(179, 163, 105, 0.03) 50px,
+                    rgba(179, 163, 105, 0.03) 100px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            /* Removed blurry effect */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #B3A369;
+            /* Removed box-shadow for less blur */
+        }
+        
+        .header-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .title {
+            font-size: 1.3em;
+            color: #B3A369;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #003057 0%, #B3A369 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 48, 87, 0.3);
+        }
+        
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 48, 87, 0.5);
+            background: linear-gradient(135deg, #004080 0%, #EAAA00 100%);
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: #003057;
+            color: #EAAA00;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #2d3748;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #B3A369;
+            display: inline-block;
+        }
+        
+        .news-item, .education-item, .publication-item, .conference-item, .project-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid #B3A369;
+            transition: all 0.3s;
+        }
+        
+        .news-item:hover, .education-item:hover, .publication-item:hover, 
+        .conference-item:hover, .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(179, 163, 105, 0.2);
+        }
+        
+        .date {
+            color: #003057;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+        
+        .authors {
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .venue {
+            color: #718096;
+            font-size: 0.95em;
+        }
+        
+        .project-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .tag {
+            background: linear-gradient(135deg, #003057 0%, #B3A369 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #4a5568;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            section {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-				  <li><a href="index.html">Home</a></li>
-				  <li><a href="publication.html">Publications</a></li> 
-				  <li><a href="cv.pdf">CV</a></li> 
-		  </ul>
-		</div>
-	  </div>
-	</nav>
-  
-  <!-- Page Content -->
-    <div class="container page">
-
-        <div class="row">
-
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100vh;">
-                
-                
-                
-                <div style="margin-top:3%; text-align:justify;" data-reveal>
-                  <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Yinsong Wang</b></div><br>
-                  <div style="font-family: 'Oswald', sans-serif; font-size: 24px;"><b>Contact: ywang4542 at gatech dot edu</b></div><br>  
-                  <div style="font-family: 'Oswald', sans-serif; font-size: 24px;"><b>About</b></div><br>           
-					<p style="font-size: 18px;">
-              Yinsong Wang is a postdoctoral fellow at the <a href="https://www.isye.gatech.edu/" target="_blank">H. Milton Stewart School of Industrial and Systems Engineering</a>, Georgia Institute of Technology. 
-              He is fortunate to be co-advised by <a href="https://sites.google.com/view/yuding/home" target="_blank">Dr. Yu Ding</a> and <a href="https://sites.google.com/site/liuxiaosite1/" target="_blank">Dr. Xiao Liu</a>. 
-              Yinsong received his Ph.D. in Industrial Engineering from Northeastern University. He was fortunate to be mentored by <a href="https://coe.northeastern.edu/people/shahrampour-shahin/" target="_blank">Dr. Shahin Shahrampour</a>. 
-              He also earned an M.S. in Manufacturing Systems Engineering and Management from The Hong Kong Polytechnic University and a B.Eng. in Mechanical Engineering from Shandong University. 
-              His research interests span data science, machine learning, information theory, and statistics.
-          </p>
-          <hr>
-          <div style="font-family: 'Roboto', sans-serif; font-size: 24px;"><b>News & Updates</b></div><br>
-
-          <p style="font-size: 18px;">
-            <strong>• Academic Job Market 2025–2026:</strong> I am currently on the academic job market and open to tenure-track faculty opportunities in industrial engineering, data science, and related areas.<br><br>
-            <strong>• Upcoming Conference:</strong> I will be attending INFORMS 2025 in Atlanta, GA. My talk is scheduled for Tuesday, October 28th, 2025, at 08:00 AM in Building A Level 3 A313. I look forward to connecting with fellow researchers and professionals in the field.<br><br>
-          </p>					
-                </div>
-            </div> 
-
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4" data-reveal>
-              <!-- Main Image -->
-              <img class="img-responsive" src="Yinsong.jpg" alt=""><br>
-                <p>H. Milton Stewart School of Industrial and Systems Engineering<br>
-                Georgia Institute of Technology<br>
-                765 Ferst Dr NW<br>
-                Atlanta, GA 30332<br>
-                United States<br>
+    <div class="container">
+        <header>
+            <img src="Yinsong.jpg" alt="Yinsong Wang" class="profile-photo">
+            <div class="header-content">
+                <h1>Dr. Yinsong Wang （王音淞）</h1>
+                <div class="title">Postdoctoral Fellow | H. Milton Stewart School of Industrial and Systems Engineering, Georgia Institute of Technology</div>
+                <p style="margin: 15px 0; color: #4a5568;">
+                    Contact: ywang4542 at gatech dot edu
                 </p>
+                <div class="contact-info">
+                    <div class="contact-item">🏛️ Georgia Institute of Technology</div>
+                    <div class="contact-item">📍 Atlanta, GA</div>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://scholar.google.com/citations?user=j87QtCAAAAAJ&hl=en" target="_blank" class="link-button">
+                        🎓 Google Scholar
+                    </a>
+                    <a href="cv.pdf" target="_blank" class="link-button">
+                        📄 Download CV
+                    </a>
+                    <a href="https://www.linkedin.com/in/yinsong-wang-126838b9/" target="_blank" class="link-button">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://orcid.org/0000-0001-8232-5586" target="_blank" class="link-button">
+                        🆔 ORCID
+                    </a>
+                </div>
             </div>
-            
-            
-            <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-              <dd><a href="https://scholar.google.com/citations?user=j87QtCAAAAAJ&hl=en">Google Scholar</a></dd> 
-              <dd><a href="https://www.linkedin.com/in/yinsong-wang-126838b9/">LinkedIn</a></dd>
-              <dd><a href="https://orcid.org/0000-0001-8232-5586">ORCID</a></dd>
-              <dd><a href="cv.pdf">CV</a></dd>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </nav>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="gt_campus.jpg" 
+                     alt="Georgia Tech Campus" 
+                     style="width: 100%; max-width: 900px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
+            </div>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #4a5568;">
+                I am a postdoctoral fellow at the <a href="https://www.isye.gatech.edu/" target="_blank">H. Milton Stewart School of Industrial and Systems Engineering</a>, Georgia Institute of Technology.<br>
+                My research focuses on enabling the future of data-driven, closed-loop scientific and engineering systems. 
+                I study three fundamental pillars of learning systems—approximation theory, estimation theory, and optimization theory—with an emphasis on addressing the challenges of efficiency, multimodality, and adaptability. 
+                These efforts have led to practical applications in manufacturing automation, human-machine collaboration, and wireless communication.
+            </p>
+        </section>
+
+        <section id="news">
+            <h2>News & Updates</h2>
+            <div class="news-item">
+                <div class="date">2025–2026</div>
+                <p><strong>Academic Job Market:</strong> I am currently on the academic job market and open to tenure-track faculty opportunities in industrial engineering, data science, and related areas.</p>
+            </div>
+            <div class="news-item">
+                <div class="date">October 2025</div>
+                <p><strong>Upcoming Conference:</strong> I will be attending INFORMS 2025 in Atlanta, GA. My talk is scheduled for Tuesday, October 28th, 2025, at 08:00 AM in Building A Level 3 A313. I look forward to connecting with fellow researchers and professionals in the field.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="date">2024 - Present</div>
+                <h3 style="color: #2d3748; margin: 8px 0;">Postdoctoral Fellow</h3>
+                <p style="color: #4a5568;"><strong>Georgia Institute of Technology</strong> | H. Milton Stewart School of Industrial and Systems Engineering</p>
+                <p style="color: #718096; margin-top: 8px;">Co-advisors: <a href="https://sites.google.com/view/yuding/home" target="_blank">Dr. Yu Ding</a>, <a href="https://sites.google.com/site/liuxiaosite1/" target="_blank">Dr. Xiao Liu</a></p>
+            </div>
+            <div class="education-item">
+                <div class="date">2018 - 2024</div>
+                <h3 style="color: #2d3748; margin: 8px 0;">Ph.D. in Industrial Engineering</h3>
+                <p style="color: #4a5568;">Northeastern University | Advisor: <a href="https://coe.northeastern.edu/people/shahrampour-shahin/" target="_blank">Dr. Shahin Shahrampour</a></p>
+            </div>
+            <div class="education-item">
+                <div class="date">2017 - 2018</div>
+                <h3 style="color: #2d3748; margin: 8px 0;">M.S. in Manufacturing Systems Engineering and Management</h3>
+                <p style="color: #4a5568;">The Hong Kong Polytechnic University</p>
+            </div>
+            <div class="education-item">
+                <div class="date">2013 - 2017</div>
+                <h3 style="color: #2d3748; margin: 8px 0;">B.Eng. in Mechanical Engineering</h3>
+                <p style="color: #4a5568;">Shandong University</p>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <h3>Journal</h3>
+            <div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://openreview.net/pdf?id=73uyerai53" target="_blank">TAP: The attention patch for cross-modal knowledge transfer from unlabeled data</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
+                    <div class="venue">"Transactions on Machine Learning Research", 2024.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/10190133" target="_blank">TAKDE: Temporal adaptive kernel density estimator for real-time dynamic density estimation</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Yu Ding, Shahin Shahrampour</div>
+                    <div class="venue">"IEEE Transactions on Pattern Analysis and Machine Intelligence", vol. 45, no. 11, pp. 13831-13843, 2023.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://link.springer.com/article/10.1007/s43670-022-00022-w" target="_blank">Learning from non-iid data in Hilbert spaces: An optimal recovery perspective</a></div>
+                    <div class="authors">Simon Foucart, Chunyang Liao, Shahin Shahrampour, <strong>Yinsong Wang</strong> (alphabetical order)</div>
+                    <div class="venue">"Sampling Theory, Signal Processing, and Data Analysis", vol. 20, no. 1, p. 5, 2022.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9614652" target="_blank">ORCCA: Optimal randomized canonical correlation analysis</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
+                    <div class="venue">"IEEE Transactions on Neural Networks and Learning Systems", vol. 34, no. 8, pp. 5024-5036, 2021.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9474957" target="_blank">Classification of officers’ driving situations based on eye-tracking and driver performance measures</a></div>
+                    <div class="authors">Maryam Zahabi, <strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
+                    <div class="venue">"IEEE Transactions on Human-Machine Systems", vol. 51, no. 4, pp. 394-402, 2021.</div>
+                </div>
+            </div>
+            <h3>Conference</h3>
+            <div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://www.sciencedirect.com/science/article/pii/S1877050923006786" target="_blank">Estimating traffic density using transformer decoders</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Jing Zhang, Daniel Nikovski, Takuro Kojima</div>
+                    <div class="venue">"The 4th International Workshop on Statistical Methods and Artificial Intelligence", Leuven, Belgium, Mar 2024, pp. 1027-1032.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://link.springer.com/chapter/10.1007/978-3-031-52670-1_27" target="_blank">Tracking dynamic Gaussian density with a theoretically optimal sliding window approach</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Yu Ding, Shahin Shahrampour</div>
+                    <div class="venue">"The 4th International Conference on Dynamic Data Driven Applications Systems", Cambridge, USA, Oct 2022, pp. 275-282.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9443511" target="_blank">Cell association via boundary detection: A scalable approach based on data-driven random features</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Hessam Mahdavifar, Kamran Entesari, Shahin Shahrampour</div>
+                    <div class="venue">"The 54th Asilomar Conference on Signals, Systems, and Computers", Virtual, Oct 2020, pp. 1027-1032.</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9147254" target="_blank">Distributed parameter estimation in randomized one-hidden-layer neural networks</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
+                    <div class="venue">"The 2020 American Control Conference", Virtual, Jul 2020, pp. 737-742.</div>
+                </div>
+            </div>
+            <h3>Under Review</h3>
+            <div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="https://www.arxiv.org/pdf/2508.17403" target="_blank">Mutual Information Surprise: Rethinking unexpectedness in autonomous systems</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Quan Zeng, Xiao Liu, Yu Ding</div>
+                    <div class="venue">submitted to "INFORMS Journal of Data Science".</div>
+                </div>
+            </div>
+            <h3>Working Papers</h3>
+            <div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="#">Understanding consistency regularization via neural distance penalty</a></div>
+                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
+                    <div class="venue">submitted to "IEEE Transactions on Pattern Analysis and Machine Intelligence".</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="#">Continuous Mutual Information Surprise</a></div>
+                    <div class="authors"><strong>Lead author</strong></div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="#">Score-based Mean Embedding for Distribution Regression</a></div>
+                    <div class="authors"><strong>Lead author</strong></div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-title"><a href="#">Fast Kernel Kalman Filter</a></div>
+                    <div class="authors"><strong>Co author</strong></div>
+                </div>
             </div>
 
-            
-        </div>
-
-
-    </div>
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
-    <a style="color:#07090c;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
-    <script src="app.js"></script>
     <script>
-      const toggle = document.createElement('button');
-      toggle.textContent = '🌙 / ☀️';
-      toggle.style.position = 'fixed';
-      toggle.style.bottom = '20px';
-      toggle.style.right = '20px';
-      toggle.style.padding = '10px';
-      toggle.style.borderRadius = '8px';
-      toggle.style.border = 'none';
-      toggle.style.cursor = 'pointer';
-      document.body.appendChild(toggle);
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
 
-      toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.body.classList.toggle('light-mode');
-        const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-        localStorage.setItem('mode', mode);
-      });
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-      // remember preference
-      const saved = localStorage.getItem('mode');
-      if (saved) document.body.classList.add(saved + '-mode');
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '#4a5568';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = '#003057';
+                    link.style.color = '#EAAA00';
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
