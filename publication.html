@@ -156,5 +156,28 @@
     </div>
   </div>
   <script src="app.js"></script>
+  <script>
+      const toggle = document.createElement('button');
+      toggle.textContent = '🌙 / ☀️';
+      toggle.style.position = 'fixed';
+      toggle.style.bottom = '20px';
+      toggle.style.right = '20px';
+      toggle.style.padding = '10px';
+      toggle.style.borderRadius = '8px';
+      toggle.style.border = 'none';
+      toggle.style.cursor = 'pointer';
+      document.body.appendChild(toggle);
+
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+        const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('mode', mode);
+      });
+
+      // remember preference
+      const saved = localStorage.getItem('mode');
+      if (saved) document.body.classList.add(saved + '-mode');
+    </script>
 </body>
 </html>
