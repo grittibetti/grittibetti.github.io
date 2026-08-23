@@ -44,8 +44,8 @@ h2 { margin: 0 0 1.3rem; font-size: clamp(2.25rem, 4vw, 3.8rem); }
 .button:hover { background: var(--accent); }
 .text-link { color: var(--blue); font-weight: 650; text-underline-offset: .25rem; }
 .hero-media { display: flex; flex-direction: column; align-items: flex-end; gap: 1.25rem; }
-.portrait-frame { width: 160px; margin: 0; }
-.portrait-frame img { width: 110px; height: auto; margin-left: auto; aspect-ratio: auto; filter: saturate(.8) contrast(1.03); }
+.portrait-frame { width: 190px; margin: 0; }
+.portrait-frame img { width: 170px; height: auto; margin-left: auto; aspect-ratio: auto; filter: saturate(.8) contrast(1.03); }
 .portrait-frame figcaption { display: grid; justify-items: end; margin-top: .55rem; color: var(--muted); font-size: .7rem; line-height: 1.45; }
 .portrait-frame figcaption span { white-space: nowrap; }
 .announcement { background: var(--navy); color: var(--white); }
@@ -149,8 +149,8 @@ h2 { margin: 0 0 1.3rem; font-size: clamp(2.25rem, 4vw, 3.8rem); }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 3rem; }
   .hero-copy { order: 1; }
   .hero-media { width: 100%; align-items: flex-end; }
-  .portrait-frame { width: 154px; }
-  .portrait-frame img { width: 96px; }
+  .portrait-frame { width: 160px; }
+  .portrait-frame img { width: 132px; }
   .announcement-grid, .intro-grid { grid-template-columns: 1fr; }
   .announcement-campus { width: min(100%, 340px); }
   .profile-links { margin-top: 1rem; }
