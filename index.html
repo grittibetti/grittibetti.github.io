@@ -1,528 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Yinsong Wang</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #003057 0%, #B3A369 50%, #EAAA00 100%);
-            position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 50px,
-                    rgba(179, 163, 105, 0.03) 50px,
-                    rgba(179, 163, 105, 0.03) 100px
-                );
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            /* Removed blurry effect */
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .profile-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #B3A369;
-            /* Removed box-shadow for less blur */
-        }
-        
-        .header-content {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .title {
-            font-size: 1.3em;
-            color: #B3A369;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .contact-info {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #4a5568;
-        }
-        
-        .link-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #003057 0%, #B3A369 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 48, 87, 0.3);
-        }
-        
-        .link-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 48, 87, 0.5);
-            background: linear-gradient(135deg, #004080 0%, #EAAA00 100%);
-        }
-        
-        nav {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #4a5568;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        nav a:hover {
-            background: #003057;
-            color: #EAAA00;
-            transform: translateY(-2px);
-        }
-        
-        section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.6s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h2 {
-            font-size: 2em;
-            color: #2d3748;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #B3A369;
-            display: inline-block;
-        }
-        
-        .news-item, .education-item, .publication-item, .conference-item, .project-card {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f7fafc;
-            border-radius: 12px;
-            border-left: 4px solid #B3A369;
-            transition: all 0.3s;
-        }
-        
-        .news-item:hover, .education-item:hover, .publication-item:hover, 
-        .conference-item:hover, .project-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(179, 163, 105, 0.2);
-        }
-        
-        .date {
-            color: #003057;
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-        
-        .publication-title {
-            font-weight: 600;
-            color: #2d3748;
-            margin: 8px 0;
-            font-size: 1.1em;
-        }
-        
-        .authors {
-            color: #4a5568;
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-        
-        .venue {
-            color: #718096;
-            font-size: 0.95em;
-        }
-        
-        .project-card h3 {
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-        
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-        
-        .tag {
-            background: linear-gradient(135deg, #003057 0%, #B3A369 100%);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85em;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #4a5568;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            margin-top: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            section {
-                padding: 25px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yinsong Wang is an Assistant Professor of Industrial Engineering at the University of Nevada, Reno, working on reliable and adaptive learning systems.">
+  <meta property="og:title" content="Yinsong Wang | Industrial Engineering at Nevada">
+  <meta property="og:description" content="Research on reliable and adaptive learning systems.">
+  <meta property="og:image" content="https://grittibetti.github.io/og.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yinsong Wang | Industrial Engineering at Nevada">
+  <meta name="twitter:description" content="Research on reliable and adaptive learning systems.">
+  <meta name="twitter:image" content="https://grittibetti.github.io/og.png">
+  <title>Yinsong Wang | Industrial Engineering at Nevada</title>
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="Yinsong.jpg" alt="Yinsong Wang" class="profile-photo">
-            <div class="header-content">
-                <h1>Dr. Yinsong Wang （王音淞）</h1>
-                <div class="title">Postdoctoral Fellow | H. Milton Stewart School of Industrial and Systems Engineering, Georgia Institute of Technology</div>
-                <p style="margin: 15px 0; color: #4a5568;">
-                    Contact: ywang4542 at gatech dot edu
-                </p>
-                <div class="contact-info">
-                    <div class="contact-item">🏛️ Georgia Institute of Technology</div>
-                    <div class="contact-item">📍 Atlanta, GA</div>
-                </div>
-                <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="https://scholar.google.com/citations?user=j87QtCAAAAAJ&hl=en" target="_blank" class="link-button">
-                        🎓 Google Scholar
-                    </a>
-                    <a href="cv.pdf" target="_blank" class="link-button">
-                        📄 Download CV
-                    </a>
-                    <a href="https://www.linkedin.com/in/yinsong-wang-126838b9/" target="_blank" class="link-button">
-                        💼 LinkedIn
-                    </a>
-                    <a href="https://orcid.org/0000-0001-8232-5586" target="_blank" class="link-button">
-                        🆔 ORCID
-                    </a>
-                </div>
-            </div>
-        </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Yinsong Wang, home">
+      <img src="logoUNR.png" alt="" width="46" height="46">
+      <span><strong>Yinsong Wang</strong><small>Industrial Engineering · Nevada</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="research.html">Research</a>
+      <a href="publication.html">Publications</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="join.html">Join the lab</a>
+      <a href="cv.pdf">CV</a>
+    </nav>
+  </header>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#awards">Awards</a></li>
-            </ul>
-        </nav>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Assistant Professor · University of Nevada, Reno</p>
+        <h1 id="intro-title">Learning systems that remain useful when the world changes.</h1>
+        <p class="lede">I develop mathematical foundations and practical algorithms for efficient, adaptive, and trustworthy data-driven systems.</p>
+        <div class="hero-actions">
+          <a class="button" href="research.html">Explore my research <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="mailto:yinsongw@unr.edu">Email me <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <figure class="portrait-frame">
+          <img src="Yinsong-web.jpg" alt="Portrait of Yinsong Wang" width="720" height="960">
+          <figcaption><span>Industrial Engineering</span><span>College of Engineering</span></figcaption>
+        </figure>
+      </div>
+    </section>
 
-        <section id="about">
-            <h2>About Me & My Research</h2>
-            <div style="text-align: center; margin: 30px 0;">
-                <img src="gt_campus.jpg" 
-                     alt="Georgia Tech Campus" 
-                     style="width: 100%; max-width: 900px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);">
-            </div>
-            <p style="font-size: 1.1em; line-height: 1.8; color: #4a5568;">
-                I am a postdoctoral fellow at the <a href="https://www.isye.gatech.edu/" target="_blank">H. Milton Stewart School of Industrial and Systems Engineering</a>, Georgia Institute of Technology.<br>
-                My research focuses on enabling the future of data-driven, closed-loop scientific, operational, and engineering systems. 
-                I study three fundamental pillars of learning systems—approximation theory, estimation theory, and optimization theory—with an emphasis on addressing the challenges of efficiency, multimodality, and adaptability. 
-                These efforts have led to practical applications in manufacturing automation, human-machine collaboration, and wireless communication.
-            </p>
-        </section>
+    <section class="announcement" aria-labelledby="hiring-title">
+      <div class="shell announcement-grid">
+        <p class="section-number">01 / News</p>
+        <div>
+          <p class="eyebrow light">Spring &amp; Fall 2027</p>
+          <h2 id="hiring-title">I am recruiting Ph.D. students.</h2>
+          <p>I am looking for highly motivated, curious students with strong mathematical intuition. Interested students should email a CV, a sample publication if available, and a short statement describing their research interests.</p>
+          <a class="button button-light" href="join.html">Read the application details <span aria-hidden="true">→</span></a>
+        </div>
+        <figure class="announcement-campus">
+          <img src="LogoonPhotoUNR.jpg" alt="University of Nevada, Reno campus with the Nevada N mark" width="506" height="474">
+        </figure>
+      </div>
+    </section>
 
-        <section id="news">
-            <h2>News & Updates</h2>
-            <div class="news-item">
-                <div class="date">2025–2026</div>
-                <p><strong>Academic Job Market:</strong> I am currently on the academic job market and open to tenure-track faculty opportunities.</p>
-            </div>
-            <div class="news-item">
-                <div class="date">March 2026</div>
-                <p><strong>Upcoming Conference:</strong> I will be attending the 2026 INFORMS Optimization Society Conference in Atlanta, GA.<br>
-                    I will be presenting our recent work, "Understanding Measure Consistency Regularization via Neural Distance Penalty".<br>
-                    If you would like to learn about how ideas from optimal transport and minmax optimization could explain the effectiveness of imputation and semi-supervised learning, please consider attending the talk!</p>
-            </div>
-        </section>
+    <section class="shell intro-grid" aria-labelledby="about-title">
+      <p class="section-number">02 / About</p>
+      <div class="prose-large">
+        <h2 id="about-title">Data-driven decisions, grounded in rigorous reasoning.</h2>
+        <p>My work connects approximation, estimation, and optimization to build learning systems that are efficient, multimodal, and adaptive. These ideas support applications in autonomous experimentation, manufacturing, human–machine collaboration, and other complex engineering systems.</p>
+      </div>
+      <aside class="profile-links" aria-label="Profile links">
+        <a href="https://scholar.google.com/citations?user=j87QtCAAAAAJ&amp;hl=en">Google Scholar <span>↗</span></a>
+        <a href="https://orcid.org/0000-0001-8232-5586">ORCID <span>↗</span></a>
+        <a href="https://www.linkedin.com/in/yinsong-wang-126838b9/">LinkedIn <span>↗</span></a>
+        <a href="cv.pdf">Curriculum vitae <span>↓</span></a>
+      </aside>
+    </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="date">2024 - Present</div>
-                <h3 style="color: #2d3748; margin: 8px 0;">Postdoctoral Fellow</h3>
-                <p style="color: #4a5568;"><strong>Georgia Institute of Technology</strong> | H. Milton Stewart School of Industrial and Systems Engineering</p>
-                <p style="color: #718096; margin-top: 8px;">Co-advisors: <a href="https://sites.google.com/view/yuding/home" target="_blank">Dr. Yu Ding</a>, <a href="https://sites.google.com/site/liuxiaosite1/" target="_blank">Dr. Xiao Liu</a></p>
-            </div>
-            <div class="education-item">
-                <div class="date">2021 - 2024</div>
-                <h3 style="color: #2d3748; margin: 8px 0;">Ph.D. in Industrial Engineering</h3>
-                <p style="color: #4a5568;">Northeastern University | Advisor: <a href="https://coe.northeastern.edu/people/shahrampour-shahin/" target="_blank">Dr. Shahin Shahrampour</a></p>
-            </div>
-            <div class="education-item">
-                <div class="date">2018 - 2021</div>
-                <h3 style="color: #2d3748; margin: 8px 0;">Ph.D. Candidate in Industrial Engineering</h3>
-                <p style="color: #4a5568;">Texas A&M University | Advisor: <a href="https://coe.northeastern.edu/people/shahrampour-shahin/" target="_blank">Dr. Shahin Shahrampour</a></p>
-            </div>
-            <div class="education-item">
-                <div class="date">2017 - 2018</div>
-                <h3 style="color: #2d3748; margin: 8px 0;">M.S. in Manufacturing Systems Engineering and Management</h3>
-                <p style="color: #4a5568;">The Hong Kong Polytechnic University</p>
-            </div>
-            <div class="education-item">
-                <div class="date">2013 - 2017</div>
-                <h3 style="color: #2d3748; margin: 8px 0;">B.Eng. in Mechanical Engineering</h3>
-                <p style="color: #4a5568;">Shandong University</p>
-            </div>
-        </section>
+  </main>
 
-        <section id="publications">
-            <h2>Publications</h2>
-            <h3>Journal</h3>
-            <div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://openreview.net/pdf?id=73uyerai53" target="_blank">TAP: The attention patch for cross-modal knowledge transfer from unlabeled data</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
-                    <div class="venue">"Transactions on Machine Learning Research", 2024.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/10190133" target="_blank">TAKDE: Temporal adaptive kernel density estimator for real-time dynamic density estimation</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Yu Ding, Shahin Shahrampour</div>
-                    <div class="venue">"IEEE Transactions on Pattern Analysis and Machine Intelligence", vol. 45, no. 11, pp. 13831-13843, 2023.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://link.springer.com/article/10.1007/s43670-022-00022-w" target="_blank">Learning from non-iid data in Hilbert spaces: An optimal recovery perspective</a></div>
-                    <div class="authors">Simon Foucart, Chunyang Liao, Shahin Shahrampour, <strong>Yinsong Wang</strong> (alphabetical order)</div>
-                    <div class="venue">"Sampling Theory, Signal Processing, and Data Analysis", vol. 20, no. 1, p. 5, 2022.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9614652" target="_blank">ORCCA: Optimal randomized canonical correlation analysis</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
-                    <div class="venue">"IEEE Transactions on Neural Networks and Learning Systems", vol. 34, no. 8, pp. 5024-5036, 2021.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9474957" target="_blank">Classification of officers’ driving situations based on eye-tracking and driver performance measures</a></div>
-                    <div class="authors">Maryam Zahabi, <strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
-                    <div class="venue">"IEEE Transactions on Human-Machine Systems", vol. 51, no. 4, pp. 394-402, 2021.</div>
-                </div>
-            </div>
-            <h3>Conference</h3>
-            <div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://www.sciencedirect.com/science/article/pii/S1877050923006786" target="_blank">Estimating traffic density using transformer decoders</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Jing Zhang, Daniel Nikovski, Takuro Kojima</div>
-                    <div class="venue">"The 4th International Workshop on Statistical Methods and Artificial Intelligence", Leuven, Belgium, Mar 2024, pp. 1027-1032.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://link.springer.com/chapter/10.1007/978-3-031-52670-1_27" target="_blank">Tracking dynamic Gaussian density with a theoretically optimal sliding window approach</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Yu Ding, Shahin Shahrampour</div>
-                    <div class="venue">"The 4th International Conference on Dynamic Data Driven Applications Systems", Cambridge, USA, Oct 2022, pp. 275-282.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9443511" target="_blank">Cell association via boundary detection: A scalable approach based on data-driven random features</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Hessam Mahdavifar, Kamran Entesari, Shahin Shahrampour</div>
-                    <div class="venue">"The 54th Asilomar Conference on Signals, Systems, and Computers", Virtual, Oct 2020, pp. 1027-1032.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9147254" target="_blank">Distributed parameter estimation in randomized one-hidden-layer neural networks</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
-                    <div class="venue">"The 2020 American Control Conference", Virtual, Jul 2020, pp. 737-742.</div>
-                </div>
-            </div>
-            <h3>Under Review</h3>
-            <div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://www.arxiv.org/pdf/2508.17403" target="_blank">Mutual Information Surprise: Rethinking unexpectedness in autonomous systems</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Quan Zeng, Xiao Liu, Yu Ding</div>
-                    <div class="venue">submitted to "INFORMS Journal of Data Science".</div>
-                </div>
-            </div>
-            <h3>Working Papers</h3>
-            <div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="#">Understanding consistency regularization via neural net distance</a></div>
-                    <div class="authors"><strong>Yinsong Wang</strong>, Shahin Shahrampour</div>
-                    <div class="venue">submitted to "IEEE Transactions on Pattern Analysis and Machine Intelligence".</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="#">Continuous Mutual Information Surprise</a></div>
-                    <div class="authors"><strong>Lead author</strong></div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="#">Score-based mean embedding for distribution regression</a></div>
-                    <div class="authors"><strong>Lead author</strong></div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="#">Fast kernel Kalman filter</a></div>
-                    <div class="authors"><strong>Co author</strong></div>
-                </div>
-            </div>
-            <h3>Patents</h3>
-            <div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://patents.google.com/patent/US20240304081A1/en?oq=20240304081" target="_blank">System and method for estimating a future traffic density in an environment</a></div>
-                    <div class="authors">Jing Zhang, <strong>Yinsong Wang</strong>, Daniel Nikovski</div>
-                    <div class="venue">(U.S. Patent No. US20240304081). United States Patent and Trademark Office.</div>
-                </div>
-                <div class="publication-item">
-                    <div class="publication-title"><a href="https://patents.google.com/patent/EP4457791A1/en?oq=EP4457791" target="_blank">System and method for estimating a future traffic density in an environment</a></div>
-                    <div class="authors">Jing Zhang, <strong>Yinsong Wang</strong>, Daniel Nikovski</div>
-                    <div class="venue">(EP Patent No. EP4457791A1). European Patent Office.</div>
-                </div>
-            </div>
-        
-            <section id="awards">
-                <h2>Awards</h2>
-                <div class="award-item" style="margin-bottom:18px; padding:18px; background:#f7fafc; border-radius:12px; border-left:4px solid #B3A369;">
-                    <strong>Yamamura Research Award</strong> &mdash; Northeastern University, Apr 2025
-                </div>
-                <div class="award-item" style="margin-bottom:18px; padding:18px; background:#f7fafc; border-radius:12px; border-left:4px solid #B3A369;">
-                    <strong>Teaching Fellow Award</strong> &mdash; Northeastern University, Dec 2023
-                </div>
-                <div class="award-item" style="margin-bottom:18px; padding:18px; background:#f7fafc; border-radius:12px; border-left:4px solid #B3A369;">
-                    <strong>John and Katharine Cipolla Ph.D. Merit Award</strong> &mdash; Northeastern University, Dec 2022
-                </div>
-                <div class="award-item" style="margin-bottom:18px; padding:18px; background:#f7fafc; border-radius:12px; border-left:4px solid #B3A369;">
-                    <strong>Best Poster Award</strong> &mdash; Texas A&M University ISEN Department, Nov 2019
-                </div>
-                <div class="award-item" style="margin-bottom:18px; padding:18px; background:#f7fafc; border-radius:12px; border-left:4px solid #B3A369;">
-                    <strong>Department Scholarship</strong> &mdash; Texas A&M University ISEN Department, Jan 2019
-                </div>
-            </section>
-
-    <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Add active state to navigation
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.background = '';
-                link.style.color = '#4a5568';
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.style.background = '#003057';
-                    link.style.color = '#EAAA00';
-                }
-            });
-        });
-    </script>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <img src="letterlogoUNR.png" alt="University of Nevada, Reno" width="250">
+      <p>Yinsong Wang · Industrial Engineering<br>Reno, Nevada</p>
+    </div>
+  </footer>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
